@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProjetoPadrao</string>
+    <string name="login">login</string>
+    <string name="meu_t_tulo">Meu Título</string>
+</resources>
