@@ -20,7 +20,7 @@
         android:drawableStart="@drawable/ic_lock_outline_black_24dp"
         android:drawablePadding="7dp"
         android:ems="10"
-        android:hint="Repita a senha"
+        android:hint="@string/repita_a_senha"
         android:inputType="textPersonName"
         android:padding="16dp"
         android:password="true"
