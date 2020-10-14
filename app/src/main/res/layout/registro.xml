@@ -7,13 +7,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/registro_textView_ja_possui_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ja possui conta?"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registro_button_registrar" />
+
     <EditText
         android:id="@+id/registro_editText_repita_a_senha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome"
@@ -25,11 +36,11 @@
         android:padding="16dp"
         android:password="true"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_nome_completo" />
+        app:layout_constraintTop_toBottomOf="@+id/registro_editText_senha" />
 
     <EditText
         android:id="@+id/registro_editText_senha"
@@ -37,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome"
@@ -49,40 +60,16 @@
         android:padding="16dp"
         android:password="true"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_nome_completo" />
-
-    <EditText
-        android:id="@+id/registro_editText_data_de_nascimento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/nao_tem_nome"
-        android:drawableStart="@drawable/ic_cake_black_24dp"
-        android:drawablePadding="7dp"
-        android:ems="10"
-        android:hint="Data de nascimento"
-        android:inputType="textPersonName"
-        android:padding="16dp"
-        android:password="true"
-        android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_nome_completo" />
+        app:layout_constraintTop_toBottomOf="@+id/registro_editText_email" />
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome"
@@ -113,7 +100,7 @@
         android:inputType="textPersonName"
         android:padding="16dp"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -124,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome"
@@ -136,27 +123,27 @@
         android:padding="16dp"
         android:password="true"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registro_editText_nome_completo" />
 
     <Button
-        android:id="@+id/registro_button_logar"
+        android:id="@+id/registro_button_registrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome_botao"
-        android:text="Logar"
-        android:textColor="@android:color/background_light"
+        android:text="registrar"
+        android:textColor="@color/collorLetras"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_email" />
+        app:layout_constraintTop_toBottomOf="@+id/registro_editText_repita_a_senha" />
 
     <TextView
         android:id="@+id/registro_textView_criar_sua_conta"
@@ -168,7 +155,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Criar sua conta aqui"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/collorLetras"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/registro_imageView_icone"
         app:layout_constraintHorizontal_bias="0.0"
@@ -179,8 +166,11 @@
         android:id="@+id/registro_imageView_icone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_account_circle_black_24dp"
-        tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <EditText
-        android:id="@+id/registro_editText_nome_completo"
+        android:id="@+id/login_editText_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -41,13 +41,13 @@
         android:inputType="textPersonName"
         android:padding="16dp"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <EditText
-        android:id="@+id/registro_editText_email"
+        android:id="@+id/login_editText_senha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -63,40 +63,40 @@
         android:padding="16dp"
         android:password="true"
         android:textColor="@android:color/background_dark"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_nome_completo" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_login" />
 
     <Button
-        android:id="@+id/registro_button_logar"
+        android:id="@+id/login_editText_login_button_logar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome_botao"
         android:text="Logar"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/collorLetras"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_editText_email" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_senha" />
 
     <TextView
         android:id="@+id/login_textView_nao_possui_conta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="Não possui conta? Clice aqui"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registro_button_logar" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_login_button_logar" />
 
     <TextView
-        android:id="@+id/registro_textView_criar_sua_conta"
+        android:id="@+id/login_textView_ja_possui_conta"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
@@ -104,7 +104,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Ja possui conta?\nFaça login aqui"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/collorLetras"
         android:textSize="36sp"
         app:layout_constraintEnd_toStartOf="@+id/registro_imageView_icone"
         app:layout_constraintHorizontal_bias="0.0"
@@ -115,8 +115,11 @@
         android:id="@+id/registro_imageView_icone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_account_circle_black_24dp"
-        tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
