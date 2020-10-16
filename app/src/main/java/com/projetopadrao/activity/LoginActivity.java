@@ -1,8 +1,11 @@
-package com.projetopadrao;
+package com.projetopadrao.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.projetopadrao.R;
+import com.projetopadrao.models.Usuario;
+import com.projetopadrao.models.Android;
 
 public class LoginActivity extends AppCompatActivity {
     TextView login_textView_nao_possui_conta;
@@ -21,13 +28,28 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        Log.d("ciclo_de_vida", "onCreate - a atividade iniciou");
 
+Android android = new Android(LoginActivity.this,"Conectado",);
+android.verificarConexao();
+
+        Log.d("ciclo_de_vida", "onCreate - a atividade iniciou");
+        reconhecendoComponentes();
+        inicializandoComponentes();
+
+
+
+
+
+    }
+
+    private void reconhecendoComponentes() {
         login_editText_login = (EditText) findViewById(R.id.login_editText_login);
         login_editText_senha = (EditText) findViewById(R.id.login_editText_senha);
         login_button_login = (Button) findViewById(R.id.login_editText_login_button_logar);
         login_textView_nao_possui_conta = (TextView) findViewById(R.id.login_textView_nao_possui_conta);
+    }
 
+    private void inicializandoComponentes() {
         login_textView_nao_possui_conta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,14 +65,17 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = login_editText_login.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
-                Log.d("autenticação", "\nUSUARIO: "+ usuario + "\nSenha:"+ senha);
+                Usuario usuarioLogado = new Usuario();
+                usuarioLogado.logar();
 
+                Log.d("autenticação", "\nUSUARIO: "+ usuario + "\nSenha:"+ senha);
 
             }
         });
 
-
     }
+
+
 
     @Override
     protected void onStart(){
