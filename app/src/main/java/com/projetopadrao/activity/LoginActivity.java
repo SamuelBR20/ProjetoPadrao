@@ -18,6 +18,8 @@ import com.projetopadrao.R;
 import com.projetopadrao.models.Usuario;
 import com.projetopadrao.models.Android;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
     TextView login_textView_nao_possui_conta;
     Button login_button_login;
@@ -29,15 +31,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-Android android = new Android(LoginActivity.this,"Conectado",);
-android.verificarConexao();
+        Usuario usuario = new Usuario("Rogerio","123456");
+                usuario.save();
+
+        List<Usuario> usuarios = Usuario.listAll(Usuario.class);
+
+
+        Android android = new Android(LoginActivity.this);
+        android.verificarConexao();
 
         Log.d("ciclo_de_vida", "onCreate - a atividade iniciou");
         reconhecendoComponentes();
         inicializandoComponentes();
-
-
-
 
 
     }
@@ -54,7 +59,7 @@ android.verificarConexao();
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                Toast.makeText(LoginActivity.this,"Tela de Registro", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Tela de Registro", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -68,7 +73,7 @@ android.verificarConexao();
                 Usuario usuarioLogado = new Usuario();
                 usuarioLogado.logar();
 
-                Log.d("autenticação", "\nUSUARIO: "+ usuario + "\nSenha:"+ senha);
+                Log.d("autenticação", "\nUSUARIO: " + usuario + "\nSenha:" + senha);
 
             }
         });
@@ -76,34 +81,33 @@ android.verificarConexao();
     }
 
 
-
     @Override
-    protected void onStart(){
+    protected void onStart() {
         Log.d("ciclo_de_vida", "onStart - o codigo da atividade começou a ser feito");
         super.onStart();
 
     }
 
     @Override
-    protected void  onResume(){
+    protected void onResume() {
         Log.d("ciclo_de_vida", "onResume - Estado de interação com tela");
         super.onResume();
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         Log.d("ciclo_de_vida", "onPause - iniciou o término da activity");
         super.onPause();
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         Log.d("ciclo_de_vida", "onStop - A atividade não está mais visivel ao usuario");
         super.onStop();
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         Log.d("ciclo_de_vida", "onDestroy - A Activity foi completamente destruida");
         super.onDestroy();
     }

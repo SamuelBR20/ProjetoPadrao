@@ -1,6 +1,10 @@
 package com.projetopadrao.models;
 
-public class Usuario {
+import com.orm.SugarRecord;
+
+import java.util.List;
+
+public class Usuario extends SugarRecord {
     private String nome;
     private String email;
     private String senha;
@@ -10,12 +14,11 @@ public class Usuario {
     public Usuario (){
 
     }
-    public Usuario (String nomeUsuario,String senha){
-        this.nome = nomeUsuario;
-        this.senha=senha;
+    public Usuario (String email,String senha){
+        this.email = email;
+        this.senha = senha;
 
     }
-
 
 
 
@@ -24,6 +27,36 @@ public class Usuario {
     }
 
     public void registrar(){
+
+    }
+
+    public void salvarUsuarioNoBanco(){
+        this.save();
+    }
+
+    public void deletarUsuarioNoBonco(){
+        this.delete();
+    }
+
+    public List<Usuario> listarUsuariosDoBanco(){
+        List<Usuario> usuarios = Usuario.listAll(Usuario.class);
+        return usuarios;
+    }
+
+    public Usuario buscarUsuarioPeloid(){
+        Usuario usuario = Usuario.findById(Usuario.class, this.getId());
+        return  usuario;
+    }
+
+    public void editarUsuarioBanco(){
+        Usuario usuario = this.buscarUsuarioPeloid();
+        usuario.save();
+    }
+
+    public void redefinirSenhaUsuarioBanco(){
+        Usuario usuario = this.buscarUsuarioPeloid();
+            usuario.setSenha("novaSenha1123");
+            usuario.save();
 
     }
 
