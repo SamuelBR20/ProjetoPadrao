@@ -1,4 +1,5 @@
-package com.projetopadrao.retrofit;
+
+package com.projetopadrao.api.servicos;
 
 import com.projetopadrao.models.Usuario;
 
@@ -18,6 +19,5 @@ public interface UserService {
     Call<Usuario> logar(@Body Usuario usuario);
 
     @GET("account/user/")
-    Call<Usuario> verificarUsuarioLogado(@Header("Authorization") String key);
-
+    Call<Usuario> requisitarObjetoUsuario(@Header("Authorization") String key);
 }

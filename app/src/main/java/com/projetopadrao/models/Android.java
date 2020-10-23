@@ -6,37 +6,10 @@ import android.net.NetworkInfo;
 import android.widget.Toast;
 
 public class Android {
-    private Context context;
-    private boolean conectado;
 
-    public Android(Context context){
-        this.context = context;
-    }
-
-    public void verificarConexao(){
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        this.conectado = activeNetworkInfo != null && activeNetworkInfo.isConnected();
-        if (this.conectado=true){
-            Toast.makeText(this.context,"Vocé está conectado", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public boolean isConectado() {
-        return conectado;
-    }
-
-    public void setConectado(boolean conectado) {
-        this.conectado = conectado;
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+        return (netInfo != null && netInfo.isConnected());
     }
 }
