@@ -1,11 +1,8 @@
-package com.projetopadrao.activity;
+package com.projetopadrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,9 +13,6 @@ import android.widget.Toast;
 
 import com.projetopadrao.R;
 import com.projetopadrao.models.Usuario;
-import com.projetopadrao.models.Android;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     TextView login_textView_nao_possui_conta;
@@ -31,14 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        Usuario usuario = new Usuario("Rogerio","123456");
-                usuario.save();
 
-        List<Usuario> usuarios = Usuario.listAll(Usuario.class);
-
-
-        Android android = new Android(LoginActivity.this);
-        android.verificarConexao();
 
         Log.d("ciclo_de_vida", "onCreate - a atividade iniciou");
         reconhecendoComponentes();
@@ -71,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 String senha = login_editText_senha.getText().toString();
 
                 Usuario usuarioLogado = new Usuario();
-                usuarioLogado.logar();
+                //usuarioLogado.logar();
 
                 Log.d("autenticação", "\nUSUARIO: " + usuario + "\nSenha:" + senha);
 
