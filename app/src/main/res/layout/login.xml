@@ -7,6 +7,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/login_editText_erro_credenciais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_erro_senha" />
+
+    <TextView
+        android:id="@+id/login_editText_erro_senha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_senha" />
+
+    <TextView
+        android:id="@+id/login_editText_erro_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_login" />
+
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -46,13 +90,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
+    <ProgressBar
+        android:id="@+id/login_progressBar_email"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/login_editText_login"
+        app:layout_constraintEnd_toEndOf="@+id/login_editText_login"
+        app:layout_constraintTop_toTopOf="@+id/login_editText_login"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
         android:id="@+id/login_editText_senha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome"
@@ -65,8 +119,18 @@
         android:textColor="@android:color/background_dark"
         android:textColorHint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_editText_login" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_erro_login" />
+
+    <ProgressBar
+        android:id="@+id/login_progressBar_password"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/login_editText_senha"
+        app:layout_constraintEnd_toEndOf="@+id/login_editText_senha"
+        app:layout_constraintTop_toTopOf="@+id/login_editText_senha" />
 
     <Button
         android:id="@+id/login_editText_login_button_logar"
@@ -74,15 +138,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/nao_tem_nome_botao"
         android:text="Logar"
         android:textColor="@color/collorLetras"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_editText_senha" />
+        app:layout_constraintTop_toBottomOf="@+id/login_editText_erro_credenciais" />
 
     <TextView
         android:id="@+id/login_textView_nao_possui_conta"

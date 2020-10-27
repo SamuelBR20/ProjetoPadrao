@@ -3,7 +3,9 @@ package com.projetopadrao.models.resposta;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.projetopadrao.activities.LoginActivity;
 import com.projetopadrao.activities.RegisterActivity;
+import com.projetopadrao.activities.usuario.UsuarioDetalheActivity;
 import com.projetopadrao.models.Usuario;
 
 import org.json.JSONException;
@@ -19,14 +21,14 @@ public class UsuarioErro {
     private List<String> password;
     private retrofit2.Response<Usuario> response;
     private Context context;
+    private List<String> non_field_errors;
 
     public UsuarioErro(Response<Usuario> response, Context context) {
         this.response = response;
         this.context = context;
-        mostrarErro();
     }
 
-    public void mostrarErro(){
+    public void mostrarErroRegistro(){
         try {
             JSONObject jsonObject = new JSONObject(this.response.errorBody().string());
             String jsonString = jsonObject.toString();
@@ -47,6 +49,87 @@ public class UsuarioErro {
             e.printStackTrace();
         }
 
+    }
+
+    public void mostrarErroEditar(){
+        try {
+            JSONObject jsonObject = new JSONObject(this.response.errorBody().string());
+            String jsonString = jsonObject.toString();
+            Gson gson = new Gson();
+            UsuarioErro usuarioErro = gson.fromJson(jsonString, UsuarioErro.class);
+
+            if(usuarioErro.getEmail() !=null){
+                for (String erro : usuarioErro.getEmail()){
+                    ((UsuarioDetalheActivity)context).mostrarAvisoEmail(erro);
+
+                }
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void mostrarErroLogin(){
+        try {
+            JSONObject jsonObject = new JSONObject(this.response.errorBody().string());
+            String jsonString = jsonObject.toString();
+            Gson gson = new Gson();
+            UsuarioErro usuarioErro = gson.fromJson(jsonString, UsuarioErro.class);
+
+            if(usuarioErro.getEmail() !=null){
+                for (String erro : usuarioErro.getEmail()){
+                    ((LoginActivity)context).mostrarAvisoEmail(erro);
+
+                }
+            }
+            if(usuarioErro.getPassword()!= null){
+                for (String erro : usuarioErro.getPassword()){
+                    ((LoginActivity)context).mostrarAvisoSenha(erro);
+                }
+            }
+            if(usuarioErro.getNon_field_errors()!= null){
+                for (String erro : usuarioErro.getNon_field_errors()){
+                    ((LoginActivity)context).mostrarAvisoCredenciais(erro);
+                }
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Response<Usuario> getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response<Usuario> response) {
+        this.response = response;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public List<String> getNon_field_errors() {
+        return non_field_errors;
+    }
+
+    public void setNon_field_errors(List<String> non_field_errors) {
+        this.non_field_errors = non_field_errors;
     }
 
     public List<String> getEmail() {

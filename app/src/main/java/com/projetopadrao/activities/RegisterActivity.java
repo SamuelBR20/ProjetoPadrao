@@ -1,12 +1,14 @@
 package com.projetopadrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.projetopadrao.R;
@@ -19,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText register_editText_usuario,register_editText_senha,register_editText_email,register_editText_senha_repita;
     private Button register_button_usuario;
     private TextView register_text_registrar,register_textView_aviso_email,register_textView_aviso_senha,register_textView_aviso_senha_repetida;
+    private ProgressBar register_progressBar_nome,register_progressBar_email,register_progressBar_senha,register_progressBar_senha_repita;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//
         this.register_editText_usuario = (EditText) findViewById(R.id.registro_editText_nome_completo);
-        this.register_editText_email = (EditText) findViewById(R.id.registro_editText_email);
+        this.register_editText_email = (EditText) findViewById(R.id.register_progressBar_email);
 
         this.register_editText_senha = (EditText) findViewById(R.id.registro_editText_senha);
         this.register_editText_senha_repita = (EditText) findViewById(R.id.registro_editText_repita_a_senha);
@@ -116,5 +119,31 @@ public class RegisterActivity extends AppCompatActivity {
         this.register_textView_aviso_senha_repetida.setVisibility(View.GONE);
         return true;
 
+    }public void mostrarProgressBar(){
+        register_progressBar_nome.setVisibility(View.VISIBLE);
+        register_progressBar_email.setVisibility(View.VISIBLE);
+        register_progressBar_senha.setVisibility(View.VISIBLE);
+        register_progressBar_senha_repita.setVisibility(View.VISIBLE);
+
+        desabilitarBotao();
+    }
+
+    public void esconderProgressBar(){
+        register_progressBar_nome.setVisibility(View.GONE);
+        register_progressBar_email.setVisibility(View.GONE);
+        register_progressBar_senha.setVisibility(View.GONE);
+        register_progressBar_senha_repita.setVisibility(View.GONE);
+
+        habilirarBotao();
+    }
+
+    public void habilirarBotao(){
+        this.register_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_border_button));
+
+        this.register_button_usuario.setEnabled(true);
+    }
+    public void desabilitarBotao(){
+        this.register_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_button_blue_light));
+        this.register_button_usuario.setEnabled(false);
     }
 }

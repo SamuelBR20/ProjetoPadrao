@@ -1,6 +1,7 @@
 package com.projetopadrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,95 +9,131 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.projetopadrao.R;
+import com.projetopadrao.models.Aplicacao;
 import com.projetopadrao.models.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView login_textView_nao_possui_conta;
-    Button login_button_login;
-    EditText login_editText_login;
-    EditText login_editText_senha;
+
+    //DECLARANDO OBJETOS
+    private EditText login_editText_email,login_editText_senha;
+    private Button login_button_usuario;
+    private TextView login_text_registrar,login_textview_erro_email,login_textview_erro_senha,login_textview_erro_credenciais;
+    private ProgressBar login_progressBar_email,login_progressBar_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        //this.getLifecycle().addObserver(new ActivityObserver());
 
 
-        Log.d("ciclo_de_vida", "onCreate - a atividade iniciou");
-        reconhecendoComponentes();
-        inicializandoComponentes();
-
-
+        if(Usuario.verificaUsuarioLogado()!=null){
+            Aplicacao.irParaAppActivity(LoginActivity.this);
+        }else {
+            identificandoComponentes();
+            inicializandoComponentes();
+        }
     }
 
-    private void reconhecendoComponentes() {
-        login_editText_login = (EditText) findViewById(R.id.login_editText_login);
+    private void identificandoComponentes() {
+
+        //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//
+        login_editText_email = (EditText) findViewById(R.id.login_editText_login);
         login_editText_senha = (EditText) findViewById(R.id.login_editText_senha);
-        login_button_login = (Button) findViewById(R.id.login_editText_login_button_logar);
-        login_textView_nao_possui_conta = (TextView) findViewById(R.id.login_textView_nao_possui_conta);
+        login_button_usuario = (Button) findViewById(R.id.login_editText_login_button_logar);
+        login_text_registrar = (TextView) findViewById(R.id.login_textView_nao_possui_conta);
+        login_textview_erro_email = (TextView) findViewById(R.id.login_editText_erro_login);
+        login_textview_erro_senha = (TextView) findViewById(R.id.login_editText_erro_senha);
+        login_textview_erro_credenciais = (TextView) findViewById(R.id.login_editText_erro_credenciais);
+
+
+        login_progressBar_email = (ProgressBar) findViewById(R.id.login_progressBar_email);
+        login_progressBar_password = (ProgressBar) findViewById(R.id.login_progressBar_password);
+
     }
 
     private void inicializandoComponentes() {
-        login_textView_nao_possui_conta.setOnClickListener(new View.OnClickListener() {
+        //----------------------------- BOTÃO DE LOGIN--------------------------------//
+
+        esconderComponentes();
+        esconderProgressBar();
+
+        login_button_usuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                esconderComponentes();
+                mostrarProgressBar();
+                desabilitarBotao();
+
+                String email = login_editText_email.getText().toString();
+                String senha = login_editText_senha.getText().toString();
+
+                Usuario usuarioLogado = new Usuario(email,senha,null,LoginActivity.this);
+                usuarioLogado.logar();
+
+                Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);
+
+
+            }
+        });
+
+        //------------------------- BOTÃO DE TRANSIÇÃO PARA O REGISTRO--------------------------//
+        login_text_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                Toast.makeText(LoginActivity.this, "Tela de Registro", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
+    }
 
-        login_button_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String usuario = login_editText_login.getText().toString();
-                String senha = login_editText_senha.getText().toString();
-
-                Usuario usuarioLogado = new Usuario();
-                //usuarioLogado.logar();
-
-                Log.d("autenticação", "\nUSUARIO: " + usuario + "\nSenha:" + senha);
-
-            }
-        });
+    private void esconderComponentes() {
+        login_textview_erro_email.setVisibility(View.GONE);
+        login_textview_erro_senha.setVisibility(View.GONE);
+        login_textview_erro_credenciais.setVisibility(View.GONE);
 
     }
 
-
-    @Override
-    protected void onStart() {
-        Log.d("ciclo_de_vida", "onStart - o codigo da atividade começou a ser feito");
-        super.onStart();
-
+    public void mostrarProgressBar(){
+        login_progressBar_email.setVisibility(View.VISIBLE);
+        login_progressBar_password.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    protected void onResume() {
-        Log.d("ciclo_de_vida", "onResume - Estado de interação com tela");
-        super.onResume();
+    public void esconderProgressBar(){
+        login_progressBar_email.setVisibility(View.GONE);
+        login_progressBar_password.setVisibility(View.GONE);
+
+        habilirarBotao();
     }
 
-    @Override
-    protected void onPause() {
-        Log.d("ciclo_de_vida", "onPause - iniciou o término da activity");
-        super.onPause();
+    public void mostrarAvisoEmail(String aviso){
+        this.login_textview_erro_email.setVisibility(View.VISIBLE);
+        this.login_textview_erro_email.setText(aviso);
     }
 
-    @Override
-    protected void onStop() {
-        Log.d("ciclo_de_vida", "onStop - A atividade não está mais visivel ao usuario");
-        super.onStop();
+    public void mostrarAvisoSenha(String aviso){
+        this.login_textview_erro_senha.setVisibility(View.VISIBLE);
+        this.login_textview_erro_senha.setText(aviso);
+    }
+    public void mostrarAvisoCredenciais(String aviso){
+        this.login_textview_erro_credenciais.setVisibility(View.VISIBLE);
+        this.login_textview_erro_credenciais.setText(aviso);
     }
 
-    @Override
-    protected void onDestroy() {
-        Log.d("ciclo_de_vida", "onDestroy - A Activity foi completamente destruida");
-        super.onDestroy();
+    public void habilirarBotao(){
+        this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_border_button));
+
+        this.login_button_usuario.setEnabled(true);
+    }
+    public void desabilitarBotao(){
+        this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_button_blue_light));
+        this.login_button_usuario.setEnabled(false);
     }
 
 

@@ -1,6 +1,7 @@
 package com.projetopadrao.api.retrofit;
 
 import android.content.Context;
+import android.content.Context;
 
 import com.projetopadrao.api.servicos.EventoService;
 import com.projetopadrao.api.servicos.UserService;

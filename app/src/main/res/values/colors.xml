@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#000a5d</color>
     <color name="colorAccent">#5557BC</color>
     <color name="collorLetras">#FFFFFF</color>
+    <color name="btSuccess">#5cb85c</color>
+    <color name="btInfo">#5bc0de</color>
+    <color name="btWarning">#f0ad4e</color>
+    <color name="btDanger">#d9534f</color>
+    <color name="white">#ffffff</color>
+    <color name="btPrimary">#0275d8</color>
 
 
 

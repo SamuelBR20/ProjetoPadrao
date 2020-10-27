@@ -2,9 +2,13 @@ package com.projetopadrao.models;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.CpuUsageInfo;
+import android.os.Bundle;
 
 import com.projetopadrao.activities.AppActivity;
+import com.projetopadrao.activities.LoginActivity;
+import com.projetopadrao.activities.RegisterActivity;
+import com.projetopadrao.activities.usuario.ListarUsuariosActivity;
+import com.projetopadrao.activities.usuario.UsuarioDetalheActivity;
 
 
 public class Aplicacao {
@@ -21,27 +25,32 @@ public class Aplicacao {
         this.context = context;
     }
 
-    public Context getContext() {
-        return context;
+    public static void irParaListarUsuariosActivity(Context context) {
+        Intent intent = new Intent(context, ListarUsuariosActivity.class);
+        context.startActivity(intent);
     }
-
-    public void setContext(Context context) {
-        this.context = context;
+    public static void irParaListarLoginActivity(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
-
-    public Class<?> getActivityDestino() {
-        return activityDestino;
+    public static void irParaAppActivity(Context context) {
+        Intent intent = new Intent(context, AppActivity.class);
+        context.startActivity(intent);
     }
-
-    public void setActivityDestino(Class<?> activityDestino) {
-        this.activityDestino = activityDestino;
+    public static void irParaRegisterActivity(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+        context.startActivity(intent);
     }
-
-    public void trocarDeActivity(){
-
-        Intent intent = new Intent(this.context, this.activityDestino);
-        this.context.startActivity(intent);
+    public static void irParaLoginActivity(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+        context.startActivity(intent);
     }
-
+    public static void irParaUsuarioDetalheActivity(Context context, Long id) {
+        Intent intent = new Intent(context, UsuarioDetalheActivity.class);
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
 
 }
