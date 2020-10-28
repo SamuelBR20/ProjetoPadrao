@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.projetopadrao.activities.AppActivity;
 import com.projetopadrao.activities.LoginActivity;
 import com.projetopadrao.activities.RegisterActivity;
+import com.projetopadrao.activities.TarefaActivity;
 import com.projetopadrao.activities.usuario.ListarUsuariosActivity;
 import com.projetopadrao.activities.usuario.UsuarioDetalheActivity;
 
@@ -42,7 +43,11 @@ public class Aplicacao {
         context.startActivity(intent);
     }
     public static void irParaLoginActivity(Context context) {
-        Intent intent = new Intent(context, RegisterActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaTarefaActivity(Context context) {
+        Intent intent = new Intent(context, TarefaActivity.class);
         context.startActivity(intent);
     }
     public static void irParaUsuarioDetalheActivity(Context context, Long id) {
@@ -52,5 +57,7 @@ public class Aplicacao {
         intent.putExtras(b);
         context.startActivity(intent);
     }
+
+
 
 }

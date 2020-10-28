@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">ProjetoPadrao</string>
-    <string name="login">login</string>
-    <string name="meu_t_tulo">Meu Título</string>
-    <string name="repita_a_senha">Repita a senha</string>
+    <string name="app_name">Projeto Padrão</string>
+    <string name="verifica_internet">Verifique a internet</string>
+    <string name="logoff">Logoff</string>
+    <string name="deletar_conta">Deletar Conta</string>
+    <string name="usuarios">Usuarios</string>
 </resources>
